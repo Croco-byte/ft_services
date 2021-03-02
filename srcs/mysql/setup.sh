@@ -3,6 +3,8 @@ openrc &> /dev/null
 mkdir -p /run/openrc
 touch /run/openrc/softlevel
 
+/usr/bin/telegraf &
+
 # Setup the mariadb database by creating system tables and such through the rc script "setup"
 /etc/init.d/mariadb setup &> /dev/null
 

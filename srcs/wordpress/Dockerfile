@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk update
-RUN apk add openssl --no-cache
+RUN apk add openssl telegraf --no-cache
 RUN apk add openrc --no-cache
 RUN apk add nginx --no-cache
 RUN apk add wget php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-mbstring php7-json php7-session --no-cache
@@ -26,8 +26,12 @@ RUN rm /tmp/latest-fr_FR.tar.gz
 
 COPY wp-config.php /www/wordpress/wp-config.php
 
+RUN mkdir -p /etc/telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf 
+
+COPY setup.sh /root/setup.sh
+RUN chmod +x /root/setup.sh
+
+CMD 	/root/./setup.sh
+
 EXPOSE 5050
-
-CMD 	php-fpm7 -R; \
-	nginx -g "daemon off;"
-

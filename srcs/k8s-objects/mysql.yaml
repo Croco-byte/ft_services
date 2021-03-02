@@ -58,4 +58,3 @@ spec:
                         - name: mysql-pvc
                           persistentVolumeClaim:
                                   claimName: mysql-pvc
-

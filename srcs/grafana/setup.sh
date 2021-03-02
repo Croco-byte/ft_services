@@ -1,3 +1,5 @@
-/usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana.ini &
+/usr/bin/telegraf &
 
-/bin/sh
+/usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana.ini
+
+tail -F /dev/null

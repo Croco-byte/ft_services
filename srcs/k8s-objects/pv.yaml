@@ -8,6 +8,28 @@ spec:
                 storage: 1Gi
         accessModes:
                 - ReadWriteOnce
+        claimRef:
+                namespace: default
+                name: mysql-pvc
         hostPath:
-                path: /pv0001
+                path: /pv/pv0001
+                type: DirectoryOrCreate
+
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+        name: pv0002
+spec:
+        storageClassName: ""
+        capacity:
+                storage: 1Gi
+        accessModes:
+                - ReadWriteOnce
+        claimRef:
+                namespace: default
+                name: influxdb-pvc
+        hostPath:
+                path: /pv/pv0002
                 type: DirectoryOrCreate

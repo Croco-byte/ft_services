@@ -15,6 +15,20 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+        name: influxdb-pvc
+spec:
+        storageClassName: ""
+        accessModes:
+                - ReadWriteOnce
+        resources:
+                requests:
+                        storage: 1Gi
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,3 +51,10 @@ spec:
                           imagePullPolicy: Never
                           ports:
                           - containerPort: 8086
+                          volumeMounts:
+                          - name: influxdb-pvc
+                            mountPath: /var/lib/influxdb
+                        volumes:
+                        - name: influxdb-pvc
+                          persistentVolumeClaim:
+                                  claimName: influxdb-pvc

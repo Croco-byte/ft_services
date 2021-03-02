@@ -11,9 +11,9 @@ influx -execute "CREATE USER admin WITH PASSWORD 'adm_influx_pass' WITH ALL PRIV
 influx -username 'admin' -password 'adm_influx_pass' -execute "CREATE DATABASE grafana"
 influx -username 'admin' -password 'adm_influx_pass' -execute "CREATE USER graf_adm WITH PASSWORD 'graf_adm_pass'"
 influx -username 'admin' -password 'adm_influx_pass' -execute "GRANT ALL ON grafana TO graf_adm"
-# Keep metrics data only for 30 minutes, then reset (for storage concerns)
-influx -username 'admin' -password 'adm_influx_pass' -execute "CREATE RETENTION POLICY 'ft_services_30_min' ON 'grafana' DURATION 30m REPLICATION 1 DEFAULT"
+# Keep metrics data only for 60 minutes, then reset (for storage concerns)
+influx -username 'admin' -password 'adm_influx_pass' -execute "CREATE RETENTION POLICY ftservices ON grafana DURATION 1h REPLICATION 1 DEFAULT"
 
-telegraf &
+/usr/bin/telegraf &
 
 tail -F /dev/null

@@ -15,6 +15,7 @@ docker build -t service_mysql ./srcs/mysql/
 docker build -t service_phpmyadmin ./srcs/phpmyadmin/
 docker build -t service_ftps ./srcs/ftps/
 docker build -t service_influxdb ./srcs/influxdb/
+docker build -t service_grafana ./srcs/grafana/
 
 # Create kubernetes deployments and services
 kubectl create -f ./srcs/k8s-objects/
