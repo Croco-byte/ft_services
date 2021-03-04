@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Starting Minikube
-minikube start --vm-driver=none
+minikube start --vm-driver=docker
+eval $(minikube -p minikube docker-env)
 
 # Installing MetalLB objects and config
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
@@ -19,3 +20,6 @@ docker build -t service_grafana ./srcs/grafana/
 
 # Create kubernetes deployments and services
 kubectl create -f ./srcs/k8s-objects/
+
+# Launching Dashboard
+minikube dashboard &

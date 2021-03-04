@@ -21,11 +21,11 @@ mysql -u root --skip-password -e "CREATE DATABASE wordpress;"
 if [ $? -eq 0 ]; then
 	mysql -u root --skip-password wordpress < /root/wordpress.sql
 fi
-	mysql -u root --skip-password -e "CREATE USER 'wp_user'@'%' IDENTIFIED BY 'wp_database_user'";
-	mysql -u root --skip-password -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_user'@'%' WITH GRANT OPTION;"
-	mysql -u root --skip-password -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'adm_database_user'";
-	mysql -u root --skip-password -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
-	mysql -u root --skip-password -e "FLUSH PRIVILEGES;"
+mysql -u root --skip-password -e "CREATE USER 'wp_user'@'%' IDENTIFIED BY 'wp_database_user'";
+mysql -u root --skip-password -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_user'@'%' WITH GRANT OPTION;"
+mysql -u root --skip-password -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'adm_database_user'";
+mysql -u root --skip-password -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;"
+mysql -u root --skip-password -e "FLUSH PRIVILEGES;"
 
 
 # Infinite loop to keep container active
