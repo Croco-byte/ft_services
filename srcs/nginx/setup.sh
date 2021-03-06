@@ -2,4 +2,6 @@
 
 /usr/bin/telegraf &
 
-/usr/sbin/nginx -g "daemon off;"
+/usr/sbin/nginx
+
+tail -F /dev/null

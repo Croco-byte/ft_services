@@ -7,8 +7,9 @@ RUN apk add mariadb mariadb-client mariadb-common --no-cache
 RUN mkdir -p /etc/telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-COPY setup.sh /root/setup.sh
+COPY setup.sh livenessprobe.sh /root/
 COPY wordpress.sql /root/wordpress.sql
-RUN chmod +x /root/setup.sh
+RUN chmod +x /root/setup.sh /root/livenessprobe.sh
+
 
 CMD	/root/./setup.sh

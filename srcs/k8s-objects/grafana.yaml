@@ -38,5 +38,12 @@ spec:
                         - name: grafana
                           image: service_grafana
                           imagePullPolicy: Never
+                          livenessProbe:
+                                  exec:
+                                          command:
+                                          - /root/./livenessprobe.sh
+                                  initialDelaySeconds: 20
+                                  periodSeconds: 10
+                                  failureThreshold: 2
                           ports:
                           - containerPort: 3000

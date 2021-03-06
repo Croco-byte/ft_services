@@ -25,8 +25,8 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=FR/ST=France/L
 RUN mkdir -p /etc/telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 
-COPY setup.sh /root/setup.sh
-RUN chmod +x /root/setup.sh
+COPY setup.sh livenessprobe.sh /root/
+RUN chmod +x /root/setup.sh /root/livenessprobe.sh
 
 CMD	/root/./setup.sh
 
