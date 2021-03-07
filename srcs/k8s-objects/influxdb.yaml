@@ -53,7 +53,7 @@ spec:
                                   exec:
                                           command:
                                           - /root/./livenessprobe.sh
-                                  initialDelaySeconds: 40
+                                  initialDelaySeconds: 50
                                   periodSeconds: 10
                                   failureThreshold: 2
                           ports:

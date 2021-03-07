@@ -5,7 +5,7 @@ touch /run/openrc/softlevel
 sed -i 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb.conf
 service influxdb start
 
-sleep 3
+sleep 10
 
 influx -execute "CREATE USER admin WITH PASSWORD 'adm_influx_pass' WITH ALL PRIVILEGES"
 influx -username 'admin' -password 'adm_influx_pass' -execute "CREATE DATABASE grafana"
